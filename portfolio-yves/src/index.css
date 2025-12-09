@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
+
+/* Tailwind v4 theme configuration in CSS */
+@theme {
+    --font-sans: 'Manrope', sans-serif;
+    --font-syne: 'Syne', sans-serif;
+
+    --animate-spin-slow: spin 10s linear infinite;
+
+    --image-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+body {
+    background-color: #000000;
+    color: #f5f5f5;
+    cursor: none;
+    overflow-x: hidden;
+    font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-syne);
+}
+
+/* Glassmorphism */
+.quantum-glass {
+    background: rgba(20, 20, 20, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Scrollbar Hide */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Animations */
+@keyframes shim {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* PERFORMANCE OPTIMIZATIONS (Phase 13) */
+.liquid-container,
+#canvas-container,
+.parallax-layer {
+    will-change: transform;
+    transform: translateZ(0);
+    /* Force GPU */
+    backface-visibility: hidden;
+}
+
+/* Better Touch Control */
+.touch-action-none {
+    touch-action: none;
+}
+
+.service-item,
+.project-card,
+button {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.skeleton-shimmer {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 75%);
+    background-size: 200% 100%;
+    animation: shim 1.5s infinite;
+}
+
+/* LENIS SCROLL OPTIMIZATION (AAA FLUIDITY) */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* GOD MODE: BRUTALISM / 1995 HTML */
+body.brutal-mode {
+    background-color: #000000 !important;
+    color: #00ff00 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    cursor: auto !important;
+    background-image: none !important;
+}
+
+body.brutal-mode * {
+    font-family: 'Courier New', Courier, monospace !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    backdrop-filter: none !important;
+    transition: none !important;
+    animation: none !important;
+}
+
+body.brutal-mode .quantum-glass,
+body.brutal-mode header,
+body.brutal-mode .service-item {
+    background: #000 !important;
+    border: 1px solid #00ff00 !important;
+}
+
+body.brutal-mode h1,
+body.brutal-mode h2,
+body.brutal-mode h3 {
+    text-transform: uppercase !important;
+    letter-spacing: normal !important;
+    background: none !important;
+    -webkit-text-fill-color: #00ff00 !important;
+    border-bottom: 2px solid #00ff00;
+}
+
+body.brutal-mode img {
+    filter: grayscale(100%) contrast(200%) !important;
+    border: 2px solid #00ff00 !important;
+}
+
+body.brutal-mode .custom-cursor {
+    display: none !important;
+}
+
+body.brutal-mode a {
+    text-decoration: underline !important;
+    color: #00ff00 !important;
+}
+
+body.brutal-mode button {
+    background: #000 !important;
+    color: #00ff00 !important;
+    border: 1px solid #00ff00 !important;
+}
