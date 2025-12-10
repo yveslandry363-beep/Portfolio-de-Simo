@@ -70,7 +70,7 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose, links, onNav
         <Portal>
             <div
                 ref={containerRef}
-                className="fixed inset-0 z-[99999] bg-[#050505] text-white flex flex-col"
+                className="fixed inset-0 z-[99999] bg-[#050505] text-white flex flex-col opacity-0 invisible"
                 style={{ pointerEvents: 'none' }} // Managed by GSAP, but defaults to safe
             >
                 {/* 
