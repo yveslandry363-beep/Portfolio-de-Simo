@@ -1,4 +1,3 @@
-```
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -25,7 +24,7 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose, links, onNav
     const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
     useGSAP(() => {
-        gsap.set(containerRef.current, { 
+        gsap.set(containerRef.current, {
             clipPath: "inset(100% 0% 0% 0%)",
             pointerEvents: "none"
         });
@@ -87,31 +86,35 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose, links, onNav
                         {links.map((link, idx) => {
                             const isHovered = hoveredLink === link.id;
                             const image = IMAGES[link.id as keyof typeof IMAGES] || IMAGES.work;
-                            
+
                             return (
-                                <div 
+                                <div
                                     key={idx}
-                                    className={`menu - row relative w - full border - t border - white / 10 overflow - hidden transition - all duration - 700 ease -in -out cursor - pointer group ${ isHovered ? 'bg-white text-black py-24 md:py-32' : 'bg-transparent text-white py-8 md:py-10' } `}
+                                    className={`menu-row relative w-full border-t border-white/10 overflow-hidden transition-all duration-700 ease-in-out cursor-pointer group ${isHovered ? 'bg-white text-black py-24 md:py-32-important' : 'bg-transparent text-white py-8 md:py-10'}`}
+                                    style={{
+                                        paddingTop: isHovered ? '8rem' : '2.5rem',
+                                        paddingBottom: isHovered ? '8rem' : '2.5rem',
+                                    }}
                                     onMouseEnter={() => setHoveredLink(link.id)}
                                     onMouseLeave={() => setHoveredLink(null)}
                                     onClick={(e) => onNavClick(e as any, link.id)}
                                 >
                                     <div className="max-w-[90vw] mx-auto px-6 w-full flex items-center justify-between relative z-10 pointer-events-none">
-                                        
+
                                         {/* Center Text */}
-                                        <div className={`text - 6xl md: text - 9xl font - ['Syne'] font - black uppercase tracking - tighter transition - all duration - 500 ${ isHovered ? 'opacity-0 translate-y-[-50px]' : 'opacity-100 translate-y-0' } `}>
+                                        <div className={`text-6xl md:text-9xl font-['Syne'] font-black uppercase tracking-tighter transition-all duration-500 ${isHovered ? 'opacity-0 translate-y-[-50px]' : 'opacity-100 translate-y-0'}`}>
                                             {link.name}
                                         </div>
 
                                         {/* Index Number */}
-                                        <span className={`text - sm md: text - base font - mono absolute top - 1 / 2 - translate - y - 1 / 2 left - 0 md: left - 12 transition - colors duration - 300 ${ isHovered ? 'text-black opacity-0' : 'text-gray-500 opacity-100' } `}>
+                                        <span className={`text-sm md:text-base font-mono absolute top-1/2 -translate-y-1/2 left-0 md:left-12 transition-colors duration-300 ${isHovered ? 'text-black opacity-0' : 'text-gray-500 opacity-100'}`}>
                                             0{idx + 1}
                                         </span>
 
                                     </div>
 
                                     {/* AAA Marquee Reveal */}
-                                    <div className={`absolute inset - 0 flex items - center justify - center opacity - 0 transition - opacity duration - 500 pointer - events - none ${ isHovered ? 'opacity-100' : '' } `}>
+                                    <div className={`absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none ${isHovered ? 'opacity-100' : ''}`}>
                                         <div className="whitespace-nowrap flex animate-marquee">
                                             {Array(8).fill(link.name).map((text, i) => (
                                                 <div key={i} className="flex items-center mx-12">
@@ -119,7 +122,7 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose, links, onNav
                                                         {text}
                                                     </span>
                                                     <div className="w-24 h-24 md:w-32 md:h-32 ml-12 rounded-full overflow-hidden relative border-2 border-black">
-                                                        <img src={image} alt="" className="w-full h-full object-cover scale-125 group-hover:scale-100 transition-transform duration-[2s] ease-out"/>
+                                                        <img src={image} alt="" className="w-full h-full object-cover scale-125 group-hover:scale-100 transition-transform duration-[2s] ease-out" />
                                                     </div>
                                                 </div>
                                             ))}
@@ -137,19 +140,22 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose, links, onNav
                     <div className="hidden md:block">Yves-Landry S.Y.</div>
                 </div>
             </div>
-            
+
             <style>{`
-@keyframes marquee {
-    0 % { transform: translateX(0); }
-    100 % { transform: translateX(-20 %); }
-}
-                .animate - marquee {
-    animation: marquee 8s linear infinite;
-}
-`}</style>
+                @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-20%); }
+                }
+                .animate-marquee {
+                    animation: marquee 8s linear infinite;
+                }
+                /* Tailwind utility override for dynamic padding animation */
+                .menu-row {
+                    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+            `}</style>
         </Portal>
     );
 };
 
 export default MenuOverlay;
-```
