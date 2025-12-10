@@ -58,15 +58,9 @@ const TerminalContact: React.FC = () => {
             console.error("Email Error:", error);
 
             if (error.message === "CONFIGURATION_MISSING") {
-                setLogs(prev => [...prev, "WARN: Email Dispatcher not configured (Missing API Keys).", "Redirecting to local mail client..."]);
-                setTimeout(() => {
-                    window.location.href = `mailto:yveslandry363@gmail.com?subject=Prise de contact sur ton site&body=${encodeURIComponent(input)}`;
-                }, 1500);
+                setLogs(prev => [...prev, "WARN: Email Dispatcher not configured (Missing API Keys).", "Please configure EmailJS keys in source code.", "Packet dropped."]);
             } else {
-                setLogs(prev => [...prev, `ERROR: Transmission failed.`, "Redirecting to fallback protocol..."]);
-                setTimeout(() => {
-                    window.location.href = `mailto:yveslandry363@gmail.com?subject=Contact Error Fallback&body=${encodeURIComponent(input)}`;
-                }, 2000);
+                setLogs(prev => [...prev, `ERROR: Transmission failed (Server Error).`, "Packet dropped."]);
             }
         } finally {
             setIsSending(false);

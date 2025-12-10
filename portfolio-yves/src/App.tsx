@@ -211,7 +211,7 @@ const AppContent: React.FC = () => {
               onNavClick={handleNavClick}
             />
 
-            <div className="w-full overflow-hidden perspective-[2000px]">
+            <div className="w-full overflow-hidden perspective-[2000px] relative z-10">
               <div ref={contentRef} className="liquid-container origin-top">
                 <Routes>
                   <Route path="/" element={<Home projects={appData.projects} experience={appData.experience} />} />
