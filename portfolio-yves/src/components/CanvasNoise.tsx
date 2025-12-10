@@ -19,7 +19,7 @@ const CanvasNoise: React.FC = () => {
         </filter>
       </svg>
       <div
-        className="fixed inset-0 w-full h-full pointer-events-none z-[50] opacity-[0.05] mix-blend-overlay"
+        className="fixed inset-0 w-full h-full pointer-events-none z-[1] opacity-[0.05] mix-blend-overlay"
         style={{
           filter: 'url(#noiseFilter)',
           // Simple shift animation to create "alive" feeling without heavy canvas ops

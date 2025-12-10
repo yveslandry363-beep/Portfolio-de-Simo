@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuOpen }) => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-40 px-6 py-6 mix-blend-difference text-white pointer-events-none">
+      <header className="fixed top-0 left-0 w-full z-[100] px-6 py-6 mix-blend-difference text-white pointer-events-none">
         <div className="flex justify-between items-center max-w-7xl mx-auto pointer-events-auto">
           <a href="#" onClick={handleLogoClick} className="text-xl font-bold tracking-tighter uppercase font-['Syne'] relative z-50">
             Yves-Landry <span className="text-xs opacity-50 ml-1">S.Y.</span>
